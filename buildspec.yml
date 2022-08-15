@@ -25,4 +25,4 @@ phases:
       - printf '[{"name":"auth-service-container","imageUri":"%s"}]' $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/myregistry:auth-service > taskdefinition.json
 
 artifacts:
-  files: auth-service/taskdefinition.json
+  files: taskdefinition.json
