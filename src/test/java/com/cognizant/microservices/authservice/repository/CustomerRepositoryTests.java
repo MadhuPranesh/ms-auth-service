@@ -24,7 +24,7 @@ class CustomerRepositoryTests {
     @Test
     void testingtheValidUser() {
         log.info("********* testing the valid username *************");
-        final String username = "teddy";
+        final String username = "user1";
         Optional<LoginUser> userCheck = customerRepository.findByUserName(username);
         assertTrue(userCheck.isPresent());
         assertEquals(username, userCheck.get().getUserName());

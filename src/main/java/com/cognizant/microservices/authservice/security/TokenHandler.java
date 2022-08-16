@@ -32,9 +32,9 @@ public class TokenHandler {
     }
 
     public String generateToken(String userName){
-
+        log.info("********** generating token ********");
         long time1 = System.currentTimeMillis();
-        long time2 = time1+(2*60*60*1000);
+        long time2 = time1+(30*60*1000);
         Date dateIssued = new Date(time1);
         Date dateExpiring = new Date(time2);
 

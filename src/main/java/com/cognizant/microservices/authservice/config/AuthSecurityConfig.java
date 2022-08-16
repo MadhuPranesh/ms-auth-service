@@ -1,7 +1,5 @@
 package com.cognizant.microservices.authservice.config;
 
-import com.cognizant.microservices.authservice.security.TokenFilter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,13 +9,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 public class AuthSecurityConfig {
 
-    @Autowired
-    private TokenFilter tokenFilter;
+    //**not req as we are giving anonymous access to the validation end points
+//    @Autowired
+//    private TokenFilter tokenFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -28,8 +26,8 @@ public class AuthSecurityConfig {
 
         http.headers().frameOptions().disable();
         http.csrf().disable();
-        http.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
-       // http.exceptionHandling().authenticationEntryPoint(authenticationEntryPoint());
+        //**not req as we are giving anonymous access to the validation end points
+        //http.addFilterBefore(tokenFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 

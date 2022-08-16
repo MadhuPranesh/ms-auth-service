@@ -35,11 +35,17 @@ public class OrganizationExceptionHandler extends ResponseEntityExceptionHandler
     }
     @ExceptionHandler(TokenInvalidException.class)
     public final ResponseEntity<OrganizationExceptionResponse> handleTokenInvalidException(Exception ex, WebRequest request) throws Exception {
+
+        log.info("************* Some thing went wrong with the token {}",ex.getMessage());
+
         OrganizationExceptionResponse exceptionResponse = new OrganizationExceptionResponse(new Date(), "Invalid Credentials provided by the User","Invalid Credentials!!!");
         return new ResponseEntity(exceptionResponse, HttpStatus.UNAUTHORIZED);
     }
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<OrganizationExceptionResponse> handleAllExceptions(Exception ex) {
+
+        log.info("************* Some thing went wrong ",ex.getMessage());
+
         OrganizationExceptionResponse e = new OrganizationExceptionResponse(new Date(), ex.getMessage(), "Something went wrong");
         return new ResponseEntity<>(e, HttpStatus.INTERNAL_SERVER_ERROR);
     }
